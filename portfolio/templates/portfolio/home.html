@@ -1,0 +1,29 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+{% load static %}
+    <link href="{% static 'portfolio/custom.css' %}" rel="stylesheet">
+    <h1>Beto´s portfolio</h1>
+    <br />
+    <img src="{% static 'portfolio/beto.png' %}" alt="portfolio/contact.jpg" class="img-main"/>
+    <div class="project-container">
+    {% for project in projects %}
+        <div class="project-item">
+            <div>
+                <img class="img-fluid project-img" src="{{ project.image.url }}" alt="{{ project.image.url }}" />
+            </div>
+            <div>
+                <h2>{{ project.title }}</h2>
+            </div>
+            <div>
+                <p>{{ project.description }}</p>
+            </div>
+            <div>
+                {% if project.url %}
+                <a href="{{ project.url }}">Link</a>
+                {% endif%}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock%}   
